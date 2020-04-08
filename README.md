@@ -27,7 +27,7 @@
     ```json
     {
         "name": "Potato",
-        "description": "It is a stupid potato. What else you expect?",
+        "description": "Organically grown, freshly cultivated potatoes!",
         "price": "15.99"
     }
     ```
