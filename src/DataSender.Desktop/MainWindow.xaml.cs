@@ -11,7 +11,7 @@ namespace DataSender.Desktop
 {
     public partial class MainWindow : MetroWindow
     {
-        private const string ConnectionString = "Endpoint=sb://mongoehnamespace.servicebus.windows.net/;SharedAccessKeyName=AccessPolicy;SharedAccessKey=PGEbQ0cv2EHCsn/PTzDTL9r4XmKfWPfPvarPTyFR5Uc=";
+        private const string ConnectionString = "<Replace with your connection string>";
         private const string EventHubName = "mongo-eventhub";
 
         public MainWindow()
