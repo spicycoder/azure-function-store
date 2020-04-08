@@ -14,13 +14,13 @@ namespace MongoFunction
     {
         [FunctionName("AddProduct")]
         public static async Task<ActionResult<string>> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "post", Route = null)] HttpRequest request)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] HttpRequest request)
         {
             var requestBody = await new StreamReader(request.Body).ReadToEndAsync();
             var product = JsonConvert.DeserializeObject<Product>(requestBody);
 
             // Hard-coded Connection String & Database name, as they are not the point of focus for this exercise
-            var connectionString = "<Replace with your connection string>";
+            var connectionString = "mongodb+srv://app:helloWorld18@cluster0-p9r6y.mongodb.net/test?retryWrites=true&w=majority";
             var databaseName = "GroceryStore";
 
             var repository = new ProductsRepository(
