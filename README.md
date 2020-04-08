@@ -1,3 +1,13 @@
+# Sending data to Azure Event Hubs
+
+> Useful resources
+
+* <https://docs.microsoft.com/en-us/azure/event-hubs/get-started-dotnet-standard-send-v2>
+
+* <https://youtu.be/fnQG47ojccc>
+
+---
+
 # Azure Functions - Persist in MongoDB
 
 1. Create a MongoDB instance, preferably in cloud.

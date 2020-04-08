@@ -18,9 +18,9 @@
             _database = client.GetDatabase(databaseName);
         }
 
-        public async Task AddProduct(Product product)
+        public async Task AddProducts(Product[] products)
         {
-            await Products.InsertOneAsync(product);
+            await Products.InsertManyAsync(products);
         }
     }
 }
