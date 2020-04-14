@@ -5,7 +5,6 @@ namespace MongoFunction
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Azure.WebJobs.Extensions.Http;
-    using Mongo.DataAccess;
     using Newtonsoft.Json;
     using System.IO;
     using System.Linq;
@@ -19,23 +18,9 @@ namespace MongoFunction
         {
             var requestBody = await new StreamReader(request.Body).ReadToEndAsync();
             var products = JsonConvert.DeserializeObject<Product[]>(requestBody).ToArray();
-
-            if (!products.Any())
-            {
-                return new OkObjectResult("No products were added");
-            }
-
-            // Hard-coded Connection String & Database name, as they are not the point of focus for this exercise
-            var connectionString = "<Replace with your connection string>";
-            var databaseName = "GroceryStore";
-
-            var repository = new ProductsRepository(
-                connectionString,
-                databaseName);
-
-            await repository.AddProducts(products);
-
-            return new OkObjectResult("Products added successfully");
+            var result = await Helper.WriteToMongo(products);
+            var message = result ? "Products added successfully" : "No products were added";
+            return new OkObjectResult(message);
         }
     }
 }
